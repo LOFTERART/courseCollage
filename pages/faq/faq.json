@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "navigate-title": "/components/navigateTitle/index"
+  },
+  "navigationStyle": "custom"
+}

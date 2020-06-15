@@ -1,0 +1,5 @@
+/* pages/address/address.wxss */
+
+.main{
+font-family: inherit;
+}

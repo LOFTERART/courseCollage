@@ -1,0 +1,231 @@
+
+<wxs module="common" src="../../wxs/Time.wxs"></wxs>
+
+<page-meta page-style="background-color:#ffffff" background-color-top="#FFFFFF"></page-meta>
+
+
+<view class="wrapper-whitebg"></view>
+
+
+
+<navigate-title
+        pageStyle="{{pageStyle}}"
+        isActive="{{isActive}}"
+        istoHelp="{{true}}"
+/>
+
+
+
+<view  class="container {{pageStyle}}" style="padding-top: {{customBarHeight+60}}rpx;">
+
+<!--    主标题S-->
+    <view class="imtit">
+        <view class="imtit-label imtit-label-great ">
+            <view class="imtit-label-title">
+                <view class="maintit">{{homeInfo[0].name}}
+                </view>
+                <view class="subtit">{{homeInfo[0].sub_name}}
+                </view>
+            </view>
+        </view>
+    </view>
+<!--    主标题E-->
+
+    <!--顶部ADS-->
+    <view style="width: 100%;position: relative">
+
+        <image class="topImage" mode="widthFix" src="{{homeInfo[0].active_pic}}" />
+
+        <van-transition
+                show="{{ isShowAni }}"
+                name="fade-up"
+                duration="{{ { enter: 1000, leave: 3000 }  }}"
+                custom-class="block"
+        >
+            <view style="display: flex;flex-direction: row;align-items: center;height: 48rpx">
+                <image
+                        style="height: 48rpx;width: 48rpx;border-radius: 24rpx"
+                        src=" {{orderInfo[0]}}"
+                />
+                <view style="font-size: 24rpx;margin-left: 8rpx;">
+                    {{orderInfo[1]}}
+                </view>
+            </view>
+
+        </van-transition>
+
+
+    </view>
+    <!--顶部ADE-->
+
+    <!--正在拼单S-->
+
+    <view class="onTips">
+        <view class="line"></view>
+        <view>{{PingNum}}人正在拼单,可以直接参与</view>
+    </view>
+
+    <block wx:for="{{pingList}}" wx:key="index">
+        <view class="pinContain van-hairline--bottom">
+            <view class="pinContainLeft">
+                <van-image
+                        round
+                        width="70rpx"
+                        height="70rpx"
+                        src="{{item.avatar}}"
+                />
+                <view  class="pinContainLeftName">{{item.name}}</view>
+            </view>
+
+
+            <view class="pinContainRight">
+
+                <view>
+                    <view style="font-size: 24rpx;text-align: right;color: rgba(61,61,61,1)">还差<text style="color: rgba(253,65,73,1)">1</text>人拼成</view>
+                    <view style="display: flex;flex-direction: row;align-items: center;font-size: 24rpx;">
+                        <view style="font-size: 22rpx;margin-right: 10rpx">剩余</view>
+
+                        <van-count-down
+                                millisecond
+                                time="{{ item.time }}"
+                                format="HH:mm:ss"
+                        />
+
+                    </view>
+                </view>
+
+                <view class="pinContainRightButton" bindtap="clickGoPinDan">去拼单</view>
+
+            </view>
+
+        </view>
+    </block>
+    <!--正在拼单E-->
+
+    <!--拼团流程S-->
+    <view class="pinFlow">
+        <view class="onTips" style="padding: 0">
+            <view class="line"></view>
+            <view>拼团流程</view>
+        </view>
+        <view style="color:#ccc;font-size: 20rpx">*发货及上课问题详见底部说明</view>
+    </view>
+
+    <image class="topImage" mode="widthFix" src="{{homeInfo[0].pin_pic}}" />
+    <!--拼团流程-->
+
+
+    <view style="height: 20rpx;background-color: rgba(239,239,239,1)"></view>
+
+    <!--课程详情S-->
+
+    <view class="onTips">
+        <view class="line"></view>
+        <view>课程详情</view>
+    </view>
+
+    <!-- html介绍S -->
+
+    <view class="htmlContent" style="padding: 20rpx">
+
+        <parser html="{{html}}" show-with-animation>加载中...</parser>
+
+    </view>
+    <!--课程详情E-->
+
+
+
+
+
+
+    <!--底部按钮S-->
+
+<!--    还未开始-->
+    <view class="buttonContain" wx:if="{{common.formatStamp(homeInfo[0].active_start_time)===1}}" bindtap="clickMsg">
+
+
+        <view class="buttonContainload">
+            <van-button round type="info" color="rgba(248,100,47,1)">活动未开始 订阅</van-button>
+        </view>
+
+
+
+    </view>
+<!--    已经结束-->
+    <view class="buttonContain" wx:elif="{{common.formatStamp(homeInfo[0].active_end_time)===2}}">
+
+
+        <view class="buttonContainload">
+            <van-button round type="info" color="#ccc">活动已结束</van-button>
+        </view>
+
+    </view>
+<!--    进行中-->
+
+    <view class="buttonContain" wx:else>
+
+
+        <view class="buttonContainLeft">
+            <view style="color: black;font-size: 34rpx">拼团 <text style="color: red;font-weight: bold">{{homeInfo[0].pin_price}}</text> 元购买</view>
+            <view style="color: #999;" class="buyText">{{homeInfo[0].pin_desc}}</view>
+        </view>
+
+
+        <view class="buttonStyle" bindtap="clickDan">
+            <view class="priceStyle">￥ {{homeInfo[0].pin_or_price}}</view>
+            <view class="buyText">单独购买</view>
+        </view>
+
+
+        <view class="buttonStyle" style="background-color: rgba(253,65,73,1);flex: 1.4" bindtap="clickPin">
+            <view class="priceStyle">￥ 36</view>
+            <view class="buyText">发起拼单</view>
+        </view>
+
+    </view>
+    <!--底部按钮-->
+
+
+</view>
+
+
+<!--选择课程S-->
+<van-action-sheet
+        bind:close="onClose"
+        show="{{ show }}"
+        title="请选择上课年级"
+        safe-area-inset-bottom="{{true}}"
+        round="{{true}}"
+        >
+
+    <view style="width: 100%;height: 40rpx"></view>
+
+<!--    "{{item.surplus_student>0?griditemContentStyleNone:griditemContentStyle}}"-->
+  <view style="padding-bottom: 30rpx">
+
+      <van-grid column-num="3"  gutter="{{ 10 }}" clickable center >
+          <van-grid-item
+                  custom-class="griditemStyle"
+                  content-class="{{item.surplus_student>0?'griditemContentStyleNone':'griditemContentStyle'}}"
+                  text="{{item.name}}"
+                  wx:for="{{ actions }}"
+                  wx:key="index"
+                  bind:click="clickItem"
+                  data-id="{{item.id}}"
+                  data-name="{{item.name}}"
+                  data-surplus="{{item.surplus_student}}"
+          />
+      </van-grid>
+
+  </view>
+
+
+
+
+
+</van-action-sheet>
+<!--选择课程E-->
+
+
+<!--Toast-->
+<van-toast id="van-toast" />

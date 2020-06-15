@@ -1,0 +1,144 @@
+<!--pages/studio/studio.wxml-->
+<wxs module="common" src="../../wxs/Time.wxs"></wxs>
+
+<page-meta page-style="background-color:{{pageBackground}}"></page-meta>
+<view class="wrapper-{{pageStyle}}"></view>
+
+
+<navigate-title title="" isshare="{{isshare}}" pageStyle="{{pageStyle}}" helpurl="" isActive="{{isActive}}" isGoback="{{isGoback}}" isSearch="{{isSearch}}" isScancode="{{isScancode}}" istoHelp="{{istoHelp}}"
+/>
+
+
+<tui-skeleton wx:if="{{skeletonShow}}" backgroundColor="#fafafa" borderRadius="10rpx"></tui-skeleton>
+
+<view class="container {{pageStyle}}" style="padding-top: {{customBarHeight+10}}px;">
+
+
+ <view class="imtit">
+        <view class="imtit-label imtit-label-great">
+            <view class="imtit-label-title">
+                <view class="maintit">北京完美教学画室
+                </view>
+                <view class="subtit">一杯咖啡,一本书,一位朋友
+                </view>
+            </view>
+        </view>
+    </view>
+
+
+
+    <!--banner-->
+    <view class="tui-banner-box">
+        <swiper
+                indicator-dots="true"
+                autoplay="true"
+                interval="9000"
+                duration="150"
+                class="tui-banner-swiper"
+                circular="{{true}}"
+                previous-margin="60rpx"
+                next-margin="60rpx"
+                bindchange="change">
+            <swiper-item wx:for="{{banners}}" wx:key="index" class="tui-banner-item">
+                <image src="{{item.imgurl}}" class="tui-slide-image {{current!=index?'tui-banner-scale':''}}" mode="scaleToFill" bindtap="detail"
+                       data-link="{{item.link}}"
+                       data-localNum="{{item.local_num}}"
+                       data-id="{{item.id}}" />
+            </swiper-item>
+        </swiper>
+    </view>
+    <!--banner-->
+
+    <!--金刚位-->
+    <view class="tui-classify-box">
+        <view class="tui-classify-item" wx:for="{{KingList}}" wx:key="index" bindtap="clickKing" data-type="{{item.type}}" data-id="{{item.id}}" data-key="{{item.key}}" data-name="{{item.name}}">
+            <image src="{{item.imgurl}}" class="tui-classify-img" />
+            <view class="tui-classify-name">{{item.name}}</view>
+        </view>
+    </view>
+    <!--金刚位-->
+
+
+    <!--直播测试S-->
+    <view class="onTips" bindtap="clickWeb">
+        <view class="line"></view>
+        <view>直播</view>
+    </view>
+
+
+    <block wx:for="{{liveRoom}}" wx:key="index">
+
+        <view style="padding: 20rpx;box-sizing: border-box" bindtap="clickLiveVideo" data-id="{{item.roomid}}">
+
+            <image class="topImage" mode="widthFix" src="{{item.share_img}}" />
+
+            <view style="font-weight: bold">直播主题:{{item.name}}</view>
+
+            <view style="display: flex;flex-direction: row;justify-content: space-between;align-items: center">
+                <view>主播:{{item.anchor_name}}</view>
+                <subscribe room-id="{{item.roomid}}" stopPropagation></subscribe>
+            </view>
+
+            <view style="line-height: 60rpx">
+                开播时间:{{common.dateFormat(item.start_time*1000,"yyyy-MM-dd")}} {{common.dateFormat(item.start_time*1000,"hh:mm")}}-{{common.dateFormat(item.end_time*1000,"hh:mm")}}
+            </view>
+
+        </view>
+
+
+
+    </block>
+
+
+
+    <!--直播测试S-->
+
+    <view class="onTips" bindtap="clickWeb">
+        <view class="line"></view>
+        <view>机构信息</view>
+    </view>
+
+
+   <block>
+       <view  wx:for="{{schoolList}}" wx:key="index" style="padding: 20rpx;box-sizing: border-box">
+
+           <image src="{{item.imgurl}}"
+                  class="studioImg"
+                  mode="aspectFill"
+                  lazy-load="{{true}}"
+                  bindtap="clickStudio"
+                  data-id="{{item.id}}"/>
+
+           <view  class="van-hairline--bottom stuName f28">
+               机构:{{item.name}}
+           </view>
+           <view  class="van-hairline--bottom Tel f28" bindtap="onClickPhone" data-phone="{{item.tel}}">
+               联系电话:{{item.tel}}
+           </view>
+
+           <view  class="van-hairline--bottom AddressCon f28">
+
+               <view>
+                   地址:{{item.address}}
+               </view>
+               <view class="f22"
+                     style="color: #54C29A"
+                     bindtap="clickNav"
+                     data-lat="{{item.latitude}}"
+                     data-lon="{{item.longitude}}"
+                     data-add="{{item.address}}"
+                     data-name="{{item.name}}">
+                   导航
+               </view>
+
+           </view>
+
+
+       </view>
+   </block>
+
+
+</view>
+
+
+

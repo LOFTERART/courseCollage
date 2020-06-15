@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "navigate-title": "/components/navigateTitle/index",
+    "parser":"/components/parser/parser"
+  },
+  "navigationStyle": "custom"
+}

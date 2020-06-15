@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "收货地址列表",
+  "usingComponents": {
+    "van-dialog": "/miniprogram_npm/@vant/weapp/dialog/index"
+  }
+}

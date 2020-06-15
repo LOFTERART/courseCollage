@@ -1,0 +1,49 @@
+<!--faqdt.wxml-->
+<page-meta page-style="background-color:{{pageBackground}}"></page-meta>
+<view class="wrapper-{{pageStyle}}"></view>
+
+<navigate-title title="" isshare="{{isshare}}" pageStyle="{{pageStyle}}" helpurl="" isActive="{{isActive}}" isGoback="{{isGoback}}" isSearch="{{isSearch}}" isScancode="{{isScancode}}" istoHelp="{{istoHelp}}" />
+
+<view class="container {{pageStyle}}" style="display:block;padding-top: {{customBarHeight+10}}px;">
+    <view class="imtit">
+        <view class="imtit-label imtit-label-great">
+            <view class="imtit-label-title">
+                <view class="maintit">
+                    {{articleInfo.name}}
+                </view>
+                <view class="subtit">
+                    {{articleInfo.views}}人浏览
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="pagebody">
+        <view class="entry-summary">
+            <view class="contentbox" >
+                <view class="h3title"></view>
+                <view class="contentarea">
+                    <parser html="{{articleInfo.content}}" />
+                </view>
+            </view>
+
+        </view>
+    </view>
+    <view class="card kefubox">
+        <view class="cardhead">
+            <text>还想了解更多？</text>
+        </view>
+        <view class="cardfoot">
+            <view class="kefu">
+                <view class="cardcell">
+                    <view class="tit">
+                        <text>点击联系我们吧</text>
+                    </view>
+                    <view class="more">
+                        <icon />
+                    </view>
+                </view>
+                <button class="auth-btn" open-type="contact"></button>
+            </view>
+        </view>
+    </view>
+</view>

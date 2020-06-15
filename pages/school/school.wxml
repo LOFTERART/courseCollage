@@ -1,0 +1,35 @@
+<!--pages/school/school.wxml-->
+
+
+
+
+<view  wx:for="{{schoolList}}" wx:key style="padding: 20rpx;box-sizing: border-box">
+
+    <image src="{{item.imgurl}}" style="width: 100%;height: 420rpx;" mode="aspectFill" lazy-load="{{true}}" />
+
+    <view  class="van-hairline--bottom stuName f28">
+        机构:{{item.name}}
+    </view>
+    <view  class="van-hairline--bottom Tel f28" bindtap="onClickPhone" data-phone="{{item.tel}}">
+        联系电话:{{item.tel}}
+    </view>
+
+    <view  class="van-hairline--bottom AddressCon f28">
+
+        <view>
+            地址:{{item.address}}
+        </view>
+        <view class="f22"
+              style="color: red"
+              bindtap="clickNav"
+              data-lat="{{item.latitude}}"
+              data-lon="{{item.longitude}}"
+              data-add="{{item.address}}"
+              data-name="{{item.name}}">
+            导航
+        </view>
+
+    </view>
+
+
+</view>

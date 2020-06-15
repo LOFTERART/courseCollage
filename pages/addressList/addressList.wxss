@@ -1,0 +1,7 @@
+/* pages/addressList/addressList.wxss */
+@import '/miniprogram_npm/@vant/weapp/common/index.wxss';
+.fullAddress{
+    font-size: 24rpx;
+    color: #ccc;
+}
+

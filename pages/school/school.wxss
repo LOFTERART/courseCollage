@@ -1,0 +1,14 @@
+/* pages/school/school.wxss */
+@import "/miniprogram_npm/@vant/weapp/common/index.wxss";
+@import "../../app.wxss";
+
+
+.stuName{
+    display: flex;flex-direction: row;align-items: center;height: 80rpx
+}
+.Tel{
+    display: flex;flex-direction: row;align-items: center;height: 80rpx
+}
+.AddressCon{
+    display: flex;flex-direction: row;align-items: center;height: 80rpx;justify-content: space-between
+}

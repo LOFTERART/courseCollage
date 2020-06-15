@@ -1,0 +1,141 @@
+<!--pages/order/order.wxml-->
+<wxs module="common" src="../../wxs/Time.wxs"></wxs>
+<view class="page">
+
+    <view class="orderTime">
+
+        <view style="flex: 1;display: flex;flex-direction: column;justify-content: center;align-items: center">
+            <view class="numberOrder">{{courseInfo.surplus_student}}</view>
+            <view class="timeInfo">班级剩余名额</view>
+        </view>
+
+        <view style="flex: 1;display: flex;flex-direction: column;justify-content: center;align-items: center">
+            <view>
+                <van-count-down
+                        use-slot
+                        time="{{ courseInfo.time }}"
+                        bind:change="onChange"
+                >
+                    <text class="item">{{ timeData.hours }}</text>
+                    <text class="itemSep">:</text>
+                    <text class="item">{{ timeData.minutes }}</text>
+                    <text class="itemSep">:</text>
+                    <text class="item">{{ timeData.seconds }}</text>
+                </van-count-down>
+            </view>
+            <view class="timeInfo">剩余支付时间</view>
+        </view>
+
+    </view>
+
+
+<!--    特训班详情S-->
+    <view class="detailInfo">
+
+       <view>
+           <view style="font-size: 30rpx;font-weight: bold">{{courseInfo.courseName}}</view>
+           <view style="font-size: 22rpx;margin-top: 20rpx;color: rgba(154,154,154,1)">上课时间{{common.dateFormat(courseInfo.startTime,"yyyy-MM-dd")}}至{{common.dateFormat(courseInfo.endTime,"yyyy-MM-dd")}}</view>
+       </view>
+
+        <van-divider hairline />
+
+<!--        送书S-->
+       <block wx:for="{{courseInfo.book_list}}" wx:key="index">
+           <view style="display: flex;flex-direction: row;margin-bottom: 20rpx">
+
+               <van-image
+                       image-class="imgStyle"
+                       width="120rpx"
+                       height="120rpx"
+                       src="{{item.img_url}}"
+               />
+
+               <view style="display: flex;flex-direction: column;margin-left: 20rpx">
+
+                   <view style="font-size: 30rpx;font-weight: bold">{{item.title}}</view>
+                   <view style="font-size: 22rpx;margin-top: 20rpx;color: rgba(253,92,57,1)">{{item.tip}}</view>
+
+               </view>
+
+           </view>
+       </block>
+<!--        送书E-->
+
+        <van-divider hairline />
+
+<!--        支付完成S-->
+        <view style="display: flex;flex-direction: row;justify-content: space-between;align-items: center;margin-bottom: 20rpx">
+            <view style="font-size: 20rpx;color: rgba(154,154,154,1)">支付完成记得填写收货地址</view>
+            <view style="font-size: 20rpx">应付款: <text style="font-weight: bold;color: rgba(253,92,57,1);font-size: 38rpx">￥{{courseInfo.coursePrice}}</text></view>
+        </view>
+<!--        支付完成E-->
+    </view>
+<!--    特训班详情E-->
+
+
+
+    <!--        无忧服务S-->
+    <view class="wuYou">
+
+        <view style="display: flex;flex-direction: row;justify-content: space-between;align-items: center">
+            <view>无忧服务</view>
+            <view>
+                <van-icon name="info-o" />
+            </view>
+        </view>
+
+        <view style="display: flex;flex-direction: row;justify-content: space-between;align-items: center;margin-top: 20rpx">
+
+            <view class="wuYouTitle">
+                <van-icon name="checked" color="rgba(247,188,69,1)" style="margin-right: 10rpx"/> 直播授课
+            </view>
+            <view class="wuYouTitle">
+                <van-icon name="checked" color="rgba(247,188,69,1)" style="margin-right: 10rpx"/> 课程回放
+            </view>
+            <view class="wuYouTitle">
+                <van-icon name="checked" color="rgba(247,188,69,1)" style="margin-right: 10rpx"/> 回放缓存
+            </view>
+
+        </view>
+
+    </view>
+    <!--        无忧服务E-->
+
+
+<!-- html介绍S -->
+
+<view class="wuYou" style="margin-top: 20rpx">
+
+    <view style="display: flex;flex-direction: row;justify-content: space-between;align-items: center">
+        <view>课程介绍</view>
+    </view>
+
+<parser html="{{html}}" />
+</view>
+
+
+<!-- html介绍S -->
+
+
+</view>
+
+
+<!--底部按钮S-->
+<view class="buttonContain">
+
+    <view style="font-size: 30rpx;font-weight: bold;color: rgba(253,92,57,1);margin-left: 20rpx">
+        <text style="color: rgba(60,60,60,1)">应付:</text> ￥{{courseInfo.coursePrice}}  <text style="text-decoration:line-through;font-size: 20rpx;color: rgba(142,142,142,1)">￥{{courseInfo.class_orPrice}}</text>
+    </view>
+
+   <view style="margin-right: 20rpx" bindtap="clickPay">
+       <van-button round type="info" color="rgba(248,100,47,1)" >{{isHave?"已下单":"立即支付"}}</van-button>
+   </view>
+
+
+
+</view>
+<!--底部按钮-->
+
+
+<van-toast id="van-toast" />
+

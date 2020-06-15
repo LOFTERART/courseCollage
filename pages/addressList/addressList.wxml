@@ -1,0 +1,40 @@
+<!--pages/addressList/addressList.wxml-->
+
+
+<van-dialog id="van-dialog" />
+
+
+<view style="padding: 20rpx">
+    <view style="font-size: 50rpx;font-weight: bold">地址选择</view>
+    <view style="font-size: 24rpx;color: #ccc">请选择您的地址或者新增</view>
+</view>
+
+
+<block wx:for="{{list}}" wx:key="index">
+
+    <view style="display: flex;flex-direction: column;margin-bottom: 20rpx;margin-top:20rpx;padding: 20rpx" class="van-hairline--bottom" bindtap="choseAddress" data-id="{{item.id}}">
+
+        <view style="display: flex;flex-direction: row;font-size: 26rpx">
+            <view>{{item.true_name}}</view>
+            <view>{{item.tel_phone}}</view>
+        </view>
+
+        <view class="fullAddress">
+            {{item.province}}-{{item.county}}-{{item.city}}-{{item.full_address}}
+        </view>
+
+    </view>
+
+</block>
+
+
+
+
+
+<view style="width: 100%;height: 120rpx;display: flex;flex-direction: row;justify-content: center;align-items: center;" bindtap="clickAddress">
+
+    <view style="width: 380rpx;height: 80rpx;color: white;background-color: red;text-align: center;line-height: 80rpx;border-radius: 10rpx" bindtap="clickSubmit">
+        新增收货地址
+    </view>
+
+</view>

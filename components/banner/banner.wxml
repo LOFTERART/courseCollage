@@ -1,0 +1,30 @@
+<!--components/banner/banner.wxml-->
+
+
+<!--banner S-->
+<view class="swiper-container">
+
+    <swiper circular="true" class="swiper_box" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" bindchange="swiperchange" >
+        <block wx:for="{{banners}}" wx:key="id">
+            <swiper-item>
+                <image mode="scaleToFill"
+                       bindtap="tapBanner"
+                       data-id="{{item.id}}"
+                       data-url="{{item.link}}"
+                       data-name="{{item.title}}"
+                       data-localNum="{{item.local_num}}"
+                       src="{{item.imgurl}}"
+                       class="slide-image" width="100%"/>
+            </swiper-item>
+        </block>
+    </swiper>
+
+
+    <view class="dots">
+        <block wx:for="{{banners}}" wx:key="unique">
+            <view class="dot{{index == swiperCurrent ? ' active' : ''}}"></view>
+        </block>
+    </view>
+
+</view>
+<!--banner E-->

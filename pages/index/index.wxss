@@ -1,0 +1,220 @@
+
+page{
+    padding-bottom: 200rpx;
+}
+
+
+/*下单用户*/
+.child {
+    width: 380rpx;
+    height: 48rpx;
+    position: absolute;
+    top: 60rpx;
+    right: 20rpx;
+}
+
+
+/*ad*/
+.topImage{
+    width: 100%; height: 400px; background-color: #eeeeee;
+}
+/*正在拼单 课程详情 */
+.onTips{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding:20rpx;
+    font-size: 36rpx;
+    font-weight: bold;
+}
+.line{
+    border-left:5rpx solid rgba(253,65,73,1);
+    width: 0;
+    height: 24rpx;
+    margin-right: 8rpx;
+}
+/*拼团流程*/
+
+.pinFlow{
+    padding:20rpx;
+    font-size: 36rpx;
+    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center
+}
+
+/*拼团列表*/
+.pinContain{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20rpx;
+    height: 80rpx;
+}
+
+
+.pinContainLeft{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex:0.9
+}
+.pinContainLeftName{
+    font-size: 28rpx;
+    margin-left: 10rpx;
+    color: black;
+}
+
+
+
+
+
+
+.pinContainRight{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    flex: 1
+}
+
+.pinContainRightButton{
+    background-color: rgba(253,65,73,1);
+    width: 110rpx;
+    border-radius: 50rpx;
+    color: white;
+    text-align: center;
+    line-height: 50rpx;
+    font-size: 22rpx;
+    margin-left: 20rpx;
+}
+
+
+.van-count-down{
+    color: rgba(91,91,91,1) !important;
+    font-size: 21rpx !important;
+}
+
+.block{
+    z-index: 10000000!important;
+}
+
+
+.griditemStyle{
+    height: 100rpx;
+
+}
+.griditemContentStyle{
+    background-color: #cccccc!important;
+}
+.griditemContentStyleNone{
+    background-color: white!important;
+}
+/*底部按钮*/
+
+.van-button--round{
+    width: 300rpx;
+}
+
+
+
+.buttonContain{
+    padding-bottom: constant(safe-area-inset-bottom); /* 兼容 iOS < 11.2 */
+    padding-bottom: env(safe-area-inset-bottom); /* 兼容 iOS >= 11.2 */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 110rpx;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(255,255,255,0.9);
+
+}
+
+
+
+.buttonContain::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    /*border-top: 1rpx solid #eaeef1;*/
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+}
+
+
+.buttonContainload{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+
+.buttonContainLeft{
+    flex: 1.4;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding-left: 20rpx;
+    background-color: white;
+}
+
+
+.buttonStyle{
+    flex: 1;
+    background-color: rgba(253,167,40,1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white
+}
+.buyText{
+    font-size: 22rpx
+}
+.priceStyle{
+    font-size: 34rpx;
+    font-weight: bold
+}
+
+
+
+.block {
+    position: fixed;
+    top: 140px;
+    right: 20rpx;
+    width: 240rpx;
+    height: 48rpx;
+    border-radius: 24rpx;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background-color: rgb(0,0,0);
+    opacity: 0.50;
+    filter: alpha(opacity=50);
+    color: white;
+}
+
+.van-enter-active-class,
+.van-leave-active-class {
+    transition-property: background-color, transform;
+}
+
+.van-enter-class,
+.van-leave-to-class {
+    background-color: rgb(0,0,0);
+    opacity: 0.50;
+    filter: alpha(opacity=50);
+    transform: rotate(-360deg) translate3d(-100%, -100%, 0);
+}
+

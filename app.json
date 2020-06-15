@@ -1,0 +1,29 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/order/order",
+    "pages/address/address",
+    "pages/addressList/addressList",
+    "pages/success/success",
+    "pages/web/web",
+    "pages/faq/faq",
+    "pages/school/school",
+    "pages/studio/studio",
+    "pages/faqdt/faqdt"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "@navBgColor",
+    "navigationBarTitleText": "美术世界特训班",
+    "navigationBarTextStyle": "@navTxtStyle"
+  },
+  "plugins": {
+    "live-player-plugin": {
+      "version": "1.0.16",
+      "provider": "wx2b03c6e691cd7370"
+    }
+  },
+  "darkmode": true,
+  "themeLocation": "theme.json",
+  "sitemapLocation": "sitemap.json"
+}
